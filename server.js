@@ -3,11 +3,17 @@ const express = require('express');
 const app = express();
 
 // models
-const { Artist } = require('./config/sequelize');
+const { Artist, Song } = require('./models/index');
 
 app.get('/', (req, res) => {
   Artist.findAll().then(artists => {
     res.json(artists)
+  })
+});
+
+app.get('/song', (req, res) => {
+  Song.findAll().then(songs => {
+    res.json(songs)
   })
 })
 

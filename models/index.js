@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
-const keys = require('./keys');
+const keys = require('../config/keys');
 
 // models
-const ArtistModel = require('../models/artist');
-const SongModel = require('../models/song');
-const AlbumModel = require('../models/album');
+const ArtistModel = require('./artist');
+const SongModel = require('./song');
+const AlbumModel = require('./album');
 
 const sequelize = new Sequelize(keys.database, keys.username, keys.password, {
   host: keys.host,
