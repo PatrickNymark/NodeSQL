@@ -18,5 +18,6 @@ module.exports = (sequelize, type) => {
     }
   })
 
+
   return album;
 }

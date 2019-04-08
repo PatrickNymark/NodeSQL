@@ -2,20 +2,15 @@ const express = require('express');
 
 const app = express();
 
-// models
-const { Artist, Song } = require('./models/index');
+// routes
+const albums = require('./routes/albums');
 
-app.get('/', (req, res) => {
-  Artist.findAll().then(artists => {
-    res.json(artists)
-  })
-});
+// parsers
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get('/song', (req, res) => {
-  Song.findAll().then(songs => {
-    res.json(songs)
-  })
-})
+
+app.use('/albums', albums);
 
 const port = process.env.PORT || 5000;
 
