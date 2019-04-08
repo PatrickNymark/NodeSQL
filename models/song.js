@@ -9,6 +9,9 @@ module.exports = (sequalize, type) => {
       type: type.STRING,
       allowNull: false
     },
+    song_text: {
+      type: type.STRING
+    },
     artist_id: {
       type: type.INTEGER,
       references: {
