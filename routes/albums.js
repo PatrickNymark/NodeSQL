@@ -37,10 +37,10 @@ router.get('/query', (req, res) => {
 /**
  * ADD album
  */
-router.post('/add', (req, res) => {
+router.post('/', (req, res) => {
   const album = Object.assign(req.body);
 
-  console.log(album)
+  Album.create(album).then(album => res.json(album)).catch(err => res.status(500).json(err))
 })
 
 module.exports = router;
