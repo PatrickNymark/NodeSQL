@@ -18,19 +18,21 @@ router.get('/', (req, res) => {
 });
 
 /**
- * GET album by artist id
+ * GET album by album id
  */
-router.get('/query', (req, res) => {
-  const { artist_id } = req.query;
+router.get('/find/:album_id', (req, res) => {
+  const { album_id } = req.params;
 
   Album.findAll({
-    include: [
-      {
-        model: Artist,
-      }
-    ]
-  }).then(albums => {
-    console.log(albums)
+    where: {
+      album_id: album_id
+    }
+  }).then(album => {
+    if (!album) {
+      return res.status(404).json({ msg: 'Album not foundd' })
+    }
+
+    res.json(album);
   })
 })
 
